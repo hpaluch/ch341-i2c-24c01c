@@ -16,7 +16,7 @@ as you can see from [ch341_i2c_24c01c.cpp]  listing.
 
 The example program does following:
 1. Write sample string to EEPROM
-1. Read back all EEPROM contents and comparing sample string
+1. Read back all EEPROM contents and compare sample string
 1. Write erase pattern to whole EEPROM
 1. Read back whole EEPROM and verify contents
 
@@ -112,13 +112,19 @@ Dump of buffer at 0x00417140,  bytes 128
 0x0070 ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ................
 ```
 
+# Logic Analyzer output
+
+Here are Logic Analyzer outputs using [Sigrok PulseView] :
+
+Page Write of `Hello!\0` string to EEPROM:
+
 ![PulseView I2C EEPROM 24C01 Page Write](https://github.com/hpaluch/ch341-i2c-24c01c/blob/master/PulseView/page-write-24c01c.png?raw=true)
 
-There can be easily seens some challenges:
+There can be easily seen few challenges:
 * All 24C01A/B/C supports at least 8-byte page write (some of them,
   including 24C01C supports even 16-byte page write, but it is not
   supported directly with library)
-* page write may not cross page boundary - 8-bytes for most chips. Because
+* page write may not cross page boundary. Because
   starting address is `0x5` and page boundary is `0x8` there are
   only 3 bytes to be written in one page write...
 
@@ -129,6 +135,7 @@ And here is full sequential read (reading whole EEPROM):
 Please note that sequential read has no page boundary limitation. Whole
 EEPROM can be read using one command...
 
+[Sigrok PulseView]: https://sigrok.org/doc/pulseview/unstable/manual.html#overview
 [ch341_i2c_24c01c.cpp]: https://github.com/hpaluch/ch341-i2c-24c01c/blob/master/VS2010/ch341_i2c_24c01c/ch341_i2c_24c01c/ch341_i2c_24c01c.cpp
 [Atmel 24C01]: https://dflund.se/~triad/krad/entrega/at24c01.pdf
 [tme.eu - 24C01C]: https://www.tme.eu/en/details/24c01c-i_p/serial-eeprom-memories-integ-circ/microchip-technology/
