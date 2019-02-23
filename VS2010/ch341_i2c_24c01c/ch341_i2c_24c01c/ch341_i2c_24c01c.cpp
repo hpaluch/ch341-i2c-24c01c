@@ -22,24 +22,28 @@ void HpCh_DumpBuf(BYTE *buf, int n){
 	int i=0;
 	printf("Dump of buffer at 0x%p,  bytes %u\n",buf,n);
 	for(i=0;i<n;i++){
+		// if it is new line - show address
 		if ( i % VALUES_PER_LINE == 0){
-			// dump also ASCII values
-			if (i >= VALUES_PER_LINE ){
-				int j=0;
-				// XXX: puts(3) always append \n
-				putc(' ',stdout);
-				for(j=0;j<VALUES_PER_LINE;j++){
-					BYTE b = buf[i-VALUES_PER_LINE+j];
-					if (b>=32 && b<127){
-						putc(b,stdout);
-					} else {
-						putc('.',stdout);
-					}
-				}				
-			}
-			printf("\n0x%04x",i);
+			printf("0x%04x",i);
 		}
 		printf(" %02x",buf[i]);
+		// if it is last byte on line dump also ASCII values where possible...
+		if ( (i % VALUES_PER_LINE) == VALUES_PER_LINE - 1 || i == n-1 ){
+			int start =  i / VALUES_PER_LINE * VALUES_PER_LINE;
+			int end   = min( start + VALUES_PER_LINE,n);
+			int j=0;
+			// XXX: puts(3) always append \n
+			putc(' ',stdout);
+			for(j=start;j<end;j++){
+				BYTE b = buf[j];
+				if (b>=32 && b<127){
+					putc(b,stdout);
+				} else {
+					putc('.',stdout);
+				}
+			}
+			puts(""); // new line
+		}
 	}
 	printf("\n");
 }
@@ -66,7 +70,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		goto exit0;
 	}
 
-	printf("Storing string '%s' (including '\\0') at address 0x%x...\n",TEST_STR,TEST_ADDR);
+	printf("Storing string '%s' (including '\\0') at EEPROM address 0x%x...\n",TEST_STR,TEST_ADDR);
 	// NOTE: ID_24C01 will work with 24x01B/B/C only, but NOT with 24C01 (without suffix)!
 	// see README.md for more info
 	if (!CH341WriteEEPROM(iIndex,ID_24C01,TEST_ADDR,strlen(TEST_STR)+1,(PUCHAR)TEST_STR)){
