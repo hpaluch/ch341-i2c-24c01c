@@ -61,7 +61,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 
 	printf("CH341 library version: %lu\n", CH341GetVersion());
-	printf("CH341 driver  version: %lu\n", CH341GetDrvVersion());
 
 	printf("Opening device# %lu\r\n", iIndex);
 	h341 = CH341OpenDevice(iIndex);
@@ -69,6 +68,10 @@ int _tmain(int argc, _TCHAR* argv[])
 		fprintf(stderr, "CH341OpenDevice(iDevIndex=%lu) failed\r\n", iIndex);
 		goto exit0;
 	}
+
+	// NOTE: must be called *after* CH341OpenDevice()
+	printf("CH341 driver  version: %lu\n", CH341GetDrvVersion());
+
 
 	printf("Storing string '%s' (including '\\0') at EEPROM address 0x%x...\n",TEST_STR,TEST_ADDR);
 	// NOTE: ID_24C01 will work with 24x01B/B/C only, but NOT with 24C01 (without suffix)!

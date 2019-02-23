@@ -81,9 +81,10 @@ Now you can run sample program - you should see following output:
 ```
 ch341_i2c_24c01c.exe
 
+
 CH341 library version: 33
-CH341 driver  version: 0
 Opening device# 0
+CH341 driver  version: 34
 Storing string 'Hello!' (including '\0') at EEPROM address 0x5...
 Fetching whole memory content...
 Dumping EEPROM contents...
