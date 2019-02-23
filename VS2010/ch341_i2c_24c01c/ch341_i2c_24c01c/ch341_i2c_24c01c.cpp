@@ -72,7 +72,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	// NOTE: must be called *after* CH341OpenDevice()
 	printf("CH341 driver  version: %lu\n", CH341GetDrvVersion());
 
-
 	printf("Storing string '%s' (including '\\0') at EEPROM address 0x%x...\n",TEST_STR,TEST_ADDR);
 	// NOTE: ID_24C01 will work with 24x01B/B/C only, but NOT with 24C01 (without suffix)!
 	// see README.md for more info
@@ -106,7 +105,11 @@ int _tmain(int argc, _TCHAR* argv[])
 		fprintf(stderr,"CH341WriteEEPROM() failed\n");
 		goto exit1;
 	}
-
+	// wait 2ms after write (+ USB delay) - worst case (data sheet maximum is 1.5ms)
+	if (!CH341SetDelaymS(iIndex,2)){
+		fprintf(stderr,"CH341SetDelaymS() failed\n");
+		goto exit1;
+	}
 	printf("Fetching whole memory content...\n");
 	if (!CH341ReadEEPROM(iIndex, ID_24C01, 0, sizeof(buffer), buffer)){
 		fprintf(stderr,"CH341ReadEEPROM() failed\n");
