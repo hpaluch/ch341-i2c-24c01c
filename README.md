@@ -8,6 +8,11 @@ using SPI mode.
 >
 > Work in progress....
 
+Circuit schematic is below:
+
+![Schematic of I2C w 24C01C](https://github.com/hpaluch/ch341-i2c-24c01c/blob/master/ExpressPCB/ch341a-i2c-24c01c.png?raw=true)
+
+
 Hardware:
 * you
   need [CH341A USB to UART/IIC/SPI/TTL/ISP adapter EPP/MEM Parallel converter]
@@ -35,4 +40,4 @@ The CH341A adapter must be setup following way:
 [24C01C]: http://ww1.microchip.com/downloads/en/devicedoc/21201k.pdf
 [CH341A USB to UART/IIC/SPI/TTL/ISP adapter EPP/MEM Parallel converter]:http://www.chinalctech.com/index.php?_m=mod_product&_a=view&p_id=1220
 [DollaTek CH341A USB zu UART/IIC/SPI/TTL/ISP Adapter EPP/MEM Parallelwandler]:https://www.amazon.de/gp/product/B07DJZDRKG/
-
+[Getting started with LC CH341A USB conversion module]:  https://github.com/hpaluch/hpaluch.github.io/wiki/Getting-started-with-LC-CH341A-USB-conversion-module
