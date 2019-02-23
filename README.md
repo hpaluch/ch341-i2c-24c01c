@@ -4,6 +4,11 @@ Here is example how to access I2C EEPROM [24C01C]:
 from [CH341A USB to UART/IIC/SPI/TTL/ISP adapter EPP/MEM Parallel converter]
 using SPI mode.
 
+This is nice introductory example - it just uses
+stock functions `CH341WriteEEPROM()` and `CH341ReadEEPROM()` already provided by `CH341DLL.DLL` libray
+from CH341 driver. So the code if fairly trivial
+as you can see from [ch341_i2c_24c01c.cpp]  listing.
+
 > WARNING!
 >
 > This program will overwrite all contents of your 24C01C EEPROM!
@@ -107,7 +112,7 @@ Dump of buffer at 0x00417140,  bytes 128
 ```
 
 
-
+[ch341_i2c_24c01c.cpp]: https://github.com/hpaluch/ch341-i2c-24c01c/blob/master/VS2010/ch341_i2c_24c01c/ch341_i2c_24c01c/ch341_i2c_24c01c.cpp
 [Atmel 24C01]: https://dflund.se/~triad/krad/entrega/at24c01.pdf
 [tme.eu - 24C01C]: https://www.tme.eu/en/details/24c01c-i_p/serial-eeprom-memories-integ-circ/microchip-technology/
 [24C01C]: http://ww1.microchip.com/downloads/en/devicedoc/21201k.pdf
