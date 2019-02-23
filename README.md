@@ -2,7 +2,7 @@
 
 Here is example how to access I2C EEPROM [24C01C]:
 from [CH341A USB to UART/IIC/SPI/TTL/ISP adapter EPP/MEM Parallel converter]
-using SPI mode.
+using I2C mode.
 
 This is nice introductory example - it just uses
 stock functions `CH341WriteEEPROM()` and `CH341ReadEEPROM()` already provided by `CH341DLL.DLL` libray
@@ -110,6 +110,16 @@ Dump of buffer at 0x00417140,  bytes 128
 0x0060 ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ................
 0x0070 ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff
 ```
+
+![PulseView I2C EEPROM 24C01 Page Write](https://github.com/hpaluch/ch341-i2c-24c01c/blob/master/PulseView/page-write-24c01c.png?raw=true)
+
+There can be easily seens some challenges:
+* All 24C01A/B/C supports at least 8-byte page write (some of them,
+  including 24C01C supports even 16-byte page write, but it is not
+  supported directly with library)
+* page write must be page aligned - 8-bytes for most chips. Because
+  starting address is `0x5` and page boundary is `0x8` there are
+  only 3 bytes written in one page write...
 
 
 [ch341_i2c_24c01c.cpp]: https://github.com/hpaluch/ch341-i2c-24c01c/blob/master/VS2010/ch341_i2c_24c01c/ch341_i2c_24c01c/ch341_i2c_24c01c.cpp
