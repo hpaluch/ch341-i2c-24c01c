@@ -5,7 +5,7 @@ from [CH341A USB to UART/IIC/SPI/TTL/ISP adapter EPP/MEM Parallel converter]
 using I2C mode.
 
 This is nice introductory example - it just uses
-stock functions `CH341WriteEEPROM()` and `CH341ReadEEPROM()` already provided by `CH341DLL.DLL` libray
+stock functions `CH341WriteEEPROM()` and `CH341ReadEEPROM()` already provided by `CH341DLL.DLL` library
 from CH341 driver. So the code is fairly trivial
 as you can see from [ch341_i2c_24c01c.cpp]  listing.
 
@@ -13,11 +13,12 @@ as you can see from [ch341_i2c_24c01c.cpp]  listing.
 >
 > This program will overwrite all contents of your 24C01C EEPROM!
 >
-> The example program does following:
-> 1. Write sample string to EEPROM
-> 1. Read back all EEPROM contents and comparing sample string
-> 1. Write erase pattern to whole EEPROM
-> 1. Read back whole EEPROM and verify contents
+
+The example program does following:
+1. Write sample string to EEPROM
+1. Read back all EEPROM contents and comparing sample string
+1. Write erase pattern to whole EEPROM
+1. Read back whole EEPROM and verify contents
 
 Circuit schematic is below:
 
