@@ -9,12 +9,6 @@ stock functions `CH341WriteEEPROM()` and `CH341ReadEEPROM()` already provided by
 from CH341 driver. So the code is fairly trivial
 as you can see from [ch341_i2c_24c01c.cpp]  listing.
 
-The only potential problem: If read after write fails it is because
-too short delay (the EEPROM is busy when writing page and not
-responding on I2C until write is complete). However I did not
-encountered this problem - the USB latency between packets seems
-to do already good job.
-
 > WARNING!
 >
 > This program will overwrite all contents of your 24C01C EEPROM!

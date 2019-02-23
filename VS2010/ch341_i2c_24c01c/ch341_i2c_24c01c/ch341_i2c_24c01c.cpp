@@ -77,6 +77,11 @@ int _tmain(int argc, _TCHAR* argv[])
 		fprintf(stderr,"CH341WriteEEPROM() failed\n");
 		goto exit1;
 	}
+	// wait 2ms after write (+ USB delay) - worst case (data sheet maximum is 1.5ms)
+	if (!CH341SetDelaymS(iIndex,2)){
+		fprintf(stderr,"CH341SetDelaymS() failed\n");
+		goto exit1;
+	}
 	printf("Fetching whole memory content...\n");
 	if (!CH341ReadEEPROM(iIndex, ID_24C01, 0, sizeof(buffer), buffer)){
 		fprintf(stderr,"CH341ReadEEPROM() failed\n");
