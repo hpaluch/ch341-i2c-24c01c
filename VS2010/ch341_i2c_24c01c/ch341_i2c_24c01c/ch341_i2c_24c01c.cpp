@@ -14,8 +14,8 @@ static const int   TEST_ADDR = 5;
 static UCHAR buffer[HPCH_24C01_BYTES] = {0};
 // pattern to clean EEPROM
 static const UCHAR CLEAN_CHAR = 0xFF;
+
 // Hex/ASCII dump of memory
-// BUG: does not support n != VALUES_PER_LINE - TODO....
 void HpCh_DumpBuf(BYTE *buf, int n){
 	const int VALUES_PER_LINE = 16;
 
