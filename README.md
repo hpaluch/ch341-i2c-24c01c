@@ -121,6 +121,12 @@ There can be easily seens some challenges:
   starting address is `0x5` and page boundary is `0x8` there are
   only 3 bytes written in one page write...
 
+And here is full sequential read (reading whole EEPROM):
+
+![PulseView I2C EEPROM 24C01 Sequential Read](https://github.com/hpaluch/ch341-i2c-24c01c/blob/master/PulseView/sequential-read-24c01c.png?raw=true)
+
+Please note that sequential read has no page boundary limitation. Whole
+EEPROM can be read using one command...
 
 [ch341_i2c_24c01c.cpp]: https://github.com/hpaluch/ch341-i2c-24c01c/blob/master/VS2010/ch341_i2c_24c01c/ch341_i2c_24c01c/ch341_i2c_24c01c.cpp
 [Atmel 24C01]: https://dflund.se/~triad/krad/entrega/at24c01.pdf
