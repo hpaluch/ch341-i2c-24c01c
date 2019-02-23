@@ -36,6 +36,8 @@ void HpCh_DumpBuf(BYTE *buf, int n){
 			putc(' ',stdout);
 			for(j=start;j<end;j++){
 				BYTE b = buf[j];
+				// NOTE: 127 behaves strange on some terminals
+				//       therefore replaced with '.' even when 7-bit
 				if (b>=32 && b<127){
 					putc(b,stdout);
 				} else {
@@ -73,7 +75,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	printf("CH341 driver  version: %lu\n", CH341GetDrvVersion());
 
 	printf("Storing string '%s' (including '\\0') at EEPROM address 0x%x...\n",TEST_STR,TEST_ADDR);
-	// NOTE: ID_24C01 will work with 24x01B/B/C only, but NOT with 24C01 (without suffix)!
+	// NOTE: ID_24C01 will work with 24x01A/B/C only, but NOT with 24C01 (without suffix)!
 	// see README.md for more info
 	if (!CH341WriteEEPROM(iIndex,ID_24C01,TEST_ADDR,strlen(TEST_STR)+1,(PUCHAR)TEST_STR)){
 		fprintf(stderr,"CH341WriteEEPROM() failed\n");
