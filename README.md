@@ -118,9 +118,9 @@ There can be easily seens some challenges:
 * All 24C01A/B/C supports at least 8-byte page write (some of them,
   including 24C01C supports even 16-byte page write, but it is not
   supported directly with library)
-* page write must be page aligned - 8-bytes for most chips. Because
+* page write may not cross page boundary - 8-bytes for most chips. Because
   starting address is `0x5` and page boundary is `0x8` there are
-  only 3 bytes written in one page write...
+  only 3 bytes to be written in one page write...
 
 And here is full sequential read (reading whole EEPROM):
 
