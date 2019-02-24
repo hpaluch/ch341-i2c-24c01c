@@ -45,6 +45,9 @@ The CH341A adapter must be setup following way:
 * jumper set to `I2C/SPI` mode
 * voltage set to 5V TTL logic - the only voltage supported by [24C01C]
 
+![LC CH341A USB adapter setup](https://github.com/hpaluch/ch341-i2c-24c01c/blob/master/images/ch341a-5v-i2c.jpg?raw=true)
+
+
 Software setup:
 *  Download and install [CH341PAR.ZIP] - USB driver for CH341 chip
    in Parallel mode (EPP, MEM). This driver is valid 
