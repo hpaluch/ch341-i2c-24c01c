@@ -171,7 +171,7 @@ And here is full sequential read (reading whole EEPROM):
 Please note that sequential read has no page boundary limitation. Whole
 EEPROM can be read using one command...
 
-[CH341A USB to UART/IIC/SPI/TTL/ISP adapter EPP/MEM Parallel converter]: http://www.chinalctech.com/index.php?_m=mod_product&_a=view&p_id=1220
+[CH341A USB to UART/IIC/SPI/TTL/ISP adapter EPP/MEM Parallel converter]: http://www.chinalctech.com/cpzx/Programmer/Serial_Module/2019/0124/266.html
 [LC-TTL-CH341A_EN.zip]: http://www.mediafire.com/file/r9yjxqp7k753jei/LC-TTL-CH341A_EN.zip/file 
 [CH341PAR_LINUX.ZIP]: http://www.wch.cn/downloads/file/202.html
 [Sigrok PulseView]: https://sigrok.org/doc/pulseview/unstable/manual.html#overview
