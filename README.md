@@ -134,7 +134,7 @@ Dump of buffer at 0x00417140,  bytes 128
 >				mLen = iLength;
 > ```
 >
-> In csae of our EEPROM (`ID_24C01`) the second expression will apply:
+> In case of our EEPROM (`ID_24C01`) the second expression will apply:
 >
 > ```
 > mLen = 8 - (iAddr & 7 );
@@ -143,7 +143,8 @@ Dump of buffer at 0x00417140,  bytes 128
 > NOTE
 > 
 > Alternate driver source is from board vendor page [CH341A USB to UART/IIC/SPI/TTL/ISP adapter EPP/MEM Parallel converter]: 
-> 1. Get and extract [LC-TTL-CH341A_EN.zip] 
+> 1. Get and extract [LC-TTL-CH341A_EN.zip]  (uhhh, the link seems to lost
+>    after recent site revamp)
 > 1. Look into `LC-TTL-CH341A\Drivers\Other platform drivers\CH341PAR_LINUX.ZIP`
 
 
