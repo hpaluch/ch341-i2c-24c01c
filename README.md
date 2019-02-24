@@ -115,6 +115,38 @@ Dump of buffer at 0x00417140,  bytes 128
 0x0070 ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ................
 ```
 
+> TIP:
+>
+> If you are curious how library functions work, you can found
+> them in Linux driver (there is no guarantee that they 100% match
+> Windows version though):
+>
+> 1. Download and extract Linux driver: [CH341PAR_LINUX.ZIP]
+> 1. Look at `CH341PAR_LINUX\lib\ch34x_lib.c`
+>
+> For example in 
+> `CH34xWriteEEPROM()` function is very clever trick how to found
+> number of bytes till the end of page boundary:
+>
+> ```
+> mLen = iEepromID >= ID_24C04 ? 16 - ( iAddr & 15 ) : 8 - (iAddr & 7 );
+> if( mLen > iLength )
+>				mLen = iLength;
+> ```
+>
+> In csae of our EEPROM (`ID_24C01`) the second expression will apply:
+>
+> ```
+> mLen = 8 - (iAddr & 7 );
+> ...
+> ```
+> NOTE
+> 
+> Alternate driver source is from board vendor page [CH341A USB to UART/IIC/SPI/TTL/ISP adapter EPP/MEM Parallel converter]: 
+> 1. Get and extract [LC-TTL-CH341A_EN.zip] 
+> 1. Look into `LC-TTL-CH341A\Drivers\Other platform drivers\CH341PAR_LINUX.ZIP`
+
+
 # Logic Analyzer output
 
 Here are Logic Analyzer outputs using [Sigrok PulseView] :
@@ -138,6 +170,9 @@ And here is full sequential read (reading whole EEPROM):
 Please note that sequential read has no page boundary limitation. Whole
 EEPROM can be read using one command...
 
+[CH341A USB to UART/IIC/SPI/TTL/ISP adapter EPP/MEM Parallel converter]: http://www.chinalctech.com/index.php?_m=mod_product&_a=view&p_id=1220
+[LC-TTL-CH341A_EN.zip]: http://www.mediafire.com/file/r9yjxqp7k753jei/LC-TTL-CH341A_EN.zip/file 
+[CH341PAR_LINUX.ZIP]: http://www.wch.cn/downloads/file/202.html
 [Sigrok PulseView]: https://sigrok.org/doc/pulseview/unstable/manual.html#overview
 [ch341_i2c_24c01c.cpp]: https://github.com/hpaluch/ch341-i2c-24c01c/blob/master/VS2010/ch341_i2c_24c01c/ch341_i2c_24c01c/ch341_i2c_24c01c.cpp
 [Atmel 24C01]: https://dflund.se/~triad/krad/entrega/at24c01.pdf
