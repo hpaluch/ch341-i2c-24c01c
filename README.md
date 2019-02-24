@@ -179,7 +179,6 @@ EEPROM can be read using one command...
 [Atmel 24C01]: https://dflund.se/~triad/krad/entrega/at24c01.pdf
 [tme.eu - 24C01C]: https://www.tme.eu/en/details/24c01c-i_p/serial-eeprom-memories-integ-circ/microchip-technology/
 [24C01C]: http://ww1.microchip.com/downloads/en/devicedoc/21201k.pdf
-[CH341A USB to UART/IIC/SPI/TTL/ISP adapter EPP/MEM Parallel converter]:http://www.chinalctech.com/index.php?_m=mod_product&_a=view&p_id=1220
 [DollaTek CH341A USB zu UART/IIC/SPI/TTL/ISP Adapter EPP/MEM Parallelwandler]:https://www.amazon.de/gp/product/B07DJZDRKG/
 [Getting started with LC CH341A USB conversion module]:  https://github.com/hpaluch/hpaluch.github.io/wiki/Getting-started-with-LC-CH341A-USB-conversion-module
 [CH341PAR.ZIP]: http://www.wch.cn/downloads/file/7.html
